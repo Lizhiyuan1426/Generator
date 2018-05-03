@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<!-- targetRuntime属性： MyBatis3Simple：简单版 MyBatis3：豪华版 -->
+	<context id="DB2Tables" targetRuntime="MyBatis3">
+		<commentGenerator>
+			<!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql:///kd_cs" userId="root" password="123456">
+		</jdbcConnection>
+		<!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 和 
+			NUMERIC 类型解析为java.math.BigDecimal -->
+		<!-- <javaTypeResolver> -->
+		<!-- <property name="forceBigDecimals" value="false" /> -->
+		<!-- </javaTypeResolver> -->
+		<!-- 配置POJO的生成策略 -->
+		<javaModelGenerator targetPackage="com.lee.collection.entities"
+			targetProject=".\src">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+		<!-- 配置Mapper映射文件的生成策略 -->
+		<sqlMapGenerator targetPackage="com.lee.collection.mapper"
+			targetProject=".\src">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+		<!-- 配置Mapper接口的生成策略 -->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="com.lee.collection.mapper" targetProject=".\src">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+		<!-- 配置根据逆向工程分析的表名及对应的POJO类 -->
+		<table tableName="case_paid" enableCountByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			enableUpdateByExample="false"></table>
+	</context>
+</generatorConfiguration>
